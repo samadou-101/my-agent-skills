@@ -100,9 +100,14 @@ Every invocation must follow these steps.
 
 ### Step 1 — Determine the topic
 
-From the user message, extract the topic. For `/codebase-compass-all`, iterate over the full catalog.
+From the user message, extract the topic deterministically:
 
-If the topic is unknown, respond with the supported catalog and ask the user to pick one.
+- If the message starts with `/codebase-compass `, the topic is the next whitespace-separated word (e.g., `/codebase-compass logging` → `logging`).
+- If the message does not start with `/codebase-compass `, the topic is the first whitespace-separated word of the message.
+- Treat the extracted topic as case-insensitive, but use the canonical lowercase form from the catalog for file paths and manifest entries.
+- For `/codebase-compass-all`, do not extract a single topic; iterate over the full catalog instead.
+
+If the topic is missing, empty, unknown, or not in the supported catalog below, respond with the supported catalog and ask the user to pick one. Do not proceed without a valid topic.
 
 ### Step 2 — Explore the repository
 
