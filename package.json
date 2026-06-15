@@ -1,6 +1,6 @@
 {
   "name": "codebase-compass",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert any unknown codebase into a structured, navigable knowledge system and interactive HTML dashboard.",
   "main": "src/install.js",
   "bin": {
