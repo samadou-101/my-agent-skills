@@ -136,7 +136,7 @@ Always prefer function-level or line-range references over bare file links.
 
 Write `codebase-compass/<topic>/<topic>.md`.
 
-Required sections (each topic should read like a mini system report):
+Required sections (each topic should read like a polished, easy-to-scan mini system report):
 
 1. **Concept** — what this subsystem is, what problem it solves, and where it sits in the system.
 2. **Responsibility Boundaries** — what this module owns and explicitly does **not** own; scope and boundaries to prevent confusion with adjacent subsystems.
@@ -152,6 +152,23 @@ Required sections (each topic should read like a mini system report):
 6. **Data / State Model** — inputs, outputs, transformations, in-memory state, and database interactions handled by this subsystem.
 7. **Dependencies & Cross-References** — modules this subsystem depends on, modules that depend on it, external libraries involved, and coupling level. Link to related Compass topics, e.g. `/logging`, `/auth`, `/request-flow`.
 8. **Edge Cases / Failure Modes** — what breaks it, race conditions, missing-data scenarios, retry behavior, and fallback logic.
+
+#### Formatting and clarity guidelines
+
+- Use clear, descriptive Markdown headings and a consistent hierarchy (`# Title`, `## Section`, `### Sub-section`).
+- Start each major section with a one-paragraph summary before diving into details.
+- Use tables for:
+  - Component summaries (name, purpose, file reference).
+  - Configuration keys, environment variables, or options.
+  - Comparison of similar mechanisms (e.g., auth strategies, error types).
+  - Input/output mappings or request/response fields.
+- Use diagrams whenever they make the flow or architecture easier to understand:
+  - Prefer **Mermaid** diagrams (` ```mermaid `) for sequence diagrams, flowcharts, architecture diagrams, and ER diagrams.
+  - Use ASCII diagrams only when Mermaid is not appropriate.
+  - Keep diagrams focused; label nodes with real file or function names and link to code references nearby.
+- Use bullet lists for steps, responsibilities, or enumerated items; keep list items concise.
+- Use inline code for file names, function names, class names, variables, and config keys.
+- Include a short "At a glance" table near the top summarizing key files, entry points, or technologies when useful.
 
 Include these optional sections whenever relevant evidence exists:
 
