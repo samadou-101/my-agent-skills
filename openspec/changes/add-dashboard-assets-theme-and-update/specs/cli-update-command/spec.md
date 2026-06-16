@@ -59,9 +59,13 @@ For opencode, the update command SHALL merge command blocks and `skills.paths` i
 - **WHEN** the target `.opencode/opencode.json` is missing a codebase-compass command
 - **THEN** update merges the missing command and writes the file
 
-### Requirement: Update never touches generated output
-The update command SHALL NOT read, write, or delete any file under `codebase-compass/` in the target project.
+### Requirement: Update refreshes dashboard styles in generated output
+The update command SHALL copy `assets/dashboard.css` into `codebase-compass/00-codebase-view/styles.css` in the target project when that directory exists, keeping the dashboard stylesheet in sync with the skill. All other files under `codebase-compass/` shall not be modified.
 
 #### Scenario: Generated dashboard exists
-- **WHEN** the target project contains a `codebase-compass/` directory
-- **THEN** running `npx codebase-compass update` leaves every file under `codebase-compass/` unchanged
+- **WHEN** the target project contains a `codebase-compass/00-codebase-view/` directory
+- **THEN** running `npx codebase-compass update` copies `assets/dashboard.css` into `codebase-compass/00-codebase-view/styles.css` if it differs
+
+#### Scenario: No generated dashboard
+- **WHEN** the target project does not contain `codebase-compass/00-codebase-view/`
+- **THEN** running `npx codebase-compass update` does not create any files under `codebase-compass/`

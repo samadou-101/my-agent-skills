@@ -42,7 +42,7 @@ The update command will:
 - Copy `SKILL.md` only if its content has changed.
 - Mirror the `assets/` directory into the installed skill (add new, update changed, remove stale).
 - For opencode, merge command blocks and `skills.paths` into `.opencode/opencode.json` only if the merged result differs.
-- Never modify files under `codebase-compass/` (your generated output is safe).
+- Refresh `codebase-compass/00-codebase-view/styles.css` with the latest `assets/dashboard.css` if the dashboard directory exists. Other generated output is not modified.
 
 ## Dashboard theming
 

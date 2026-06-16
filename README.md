@@ -46,7 +46,7 @@ After installation, restart your agent if needed.
 npx codebase-compass update
 ```
 
-The update command refreshes `SKILL.md` and `assets/` in the installed skill directory without touching your generated `codebase-compass/` output. For opencode, it also merges command blocks into `.opencode/opencode.json` only when the result differs.
+The update command refreshes `SKILL.md` and `assets/` in the installed skill directory without touching your generated `codebase-compass/` content. For opencode, it also merges command blocks into `.opencode/opencode.json` only when the result differs. Dashboard styles (`styles.css`) are automatically refreshed to match the latest `assets/dashboard.css`.
 
 ### Manual install
 

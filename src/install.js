@@ -225,6 +225,16 @@ async function updateAgent(targetRoot, agent) {
   if (agent.key === 'opencode') {
     mergeOpencodeConfigIfChanged(targetRoot);
   }
+
+  const dashboardStyles = path.join(targetRoot, 'codebase-compass', '00-codebase-view', 'styles.css');
+  const sourceDashboardCss = path.join(agent.sourceSkillDir, 'assets', 'dashboard.css');
+  if (fs.existsSync(dashboardStyles) && fs.existsSync(sourceDashboardCss)) {
+    if (copyIfChanged(sourceDashboardCss, dashboardStyles)) {
+      console.log(`  Updated codebase-compass/00-codebase-view/styles.css`);
+    } else {
+      console.log(`  Dashboard styles unchanged`);
+    }
+  }
 }
 
 async function runInstall(targetRoot = process.cwd()) {
@@ -270,7 +280,7 @@ async function runUpdate(targetRoot = process.cwd()) {
   await updateAgent(targetRoot, selectedAgent);
 
   console.log(`\nCodebase-Compass updated for ${selectedAgent.label}.`);
-  console.log('Generated codebase-compass/ output was not modified.');
+  console.log('Dashboard styles were refreshed if present. Other output was not modified.');
 }
 
 module.exports = {

@@ -11,14 +11,15 @@ Codebase-Compass — installable agent skill
 
 Usage:
   npx codebase-compass install    Install the skill into the current project
-  npx codebase-compass update     Update the skill files without touching generated output
+  npx codebase-compass update     Update the skill files and refresh dashboard styles
 
 The install command detects agent configuration (.opencode, .claude, .codex, or .agents)
 and copies the skill into the appropriate directory.
 If no agent config is detected, it defaults to .agents/skills/.
 
 The update command refreshes SKILL.md and assets in the installed skill directory,
-and merges opencode commands if applicable. It never modifies codebase-compass/ output.
+and merges opencode commands if applicable. Dashboard styles are also refreshed.
+Other generated output is not modified.
 `);
 }
 
