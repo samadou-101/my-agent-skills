@@ -235,6 +235,16 @@ async function updateAgent(targetRoot, agent) {
       console.log(`  Dashboard styles unchanged`);
     }
   }
+
+  const dashboardIndex = path.join(targetRoot, 'codebase-compass', '00-codebase-view', 'index.html');
+  const sourceIndexHtml = path.join(agent.sourceSkillDir, 'assets', 'index.html');
+  if (fs.existsSync(dashboardIndex) && fs.existsSync(sourceIndexHtml)) {
+    if (copyIfChanged(sourceIndexHtml, dashboardIndex)) {
+      console.log(`  Updated codebase-compass/00-codebase-view/index.html`);
+    } else {
+      console.log(`  Dashboard index unchanged`);
+    }
+  }
 }
 
 async function runInstall(targetRoot = process.cwd()) {

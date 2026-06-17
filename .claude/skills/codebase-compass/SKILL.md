@@ -93,7 +93,11 @@ codebase-compass/
     NN-topic.md
 ```
 
-The skill also ships with a canonical `assets/dashboard.css` file located next to `SKILL.md`. This file contains the full dashboard stylesheet with light/dark theme support. When creating the dashboard shell, copy `assets/dashboard.css` into `codebase-compass/00-codebase-view/styles.css` instead of generating styles inline.
+The skill also ships with a canonical `assets/` directory next to `SKILL.md` containing:
+- `dashboard.css` — the full dashboard stylesheet with light/dark theme support.
+- `index.html` — the base dashboard shell template.
+
+When creating the dashboard shell, copy these assets into `codebase-compass/00-codebase-view/` instead of generating them inline.
 
 If `00-codebase-view/index.html`, `styles.css`, or `script.js` do not exist, create them with a dependency-free dashboard shell that includes a fixed sidebar and custom scrollbar styling (see Step 7).
 
@@ -227,34 +231,7 @@ If missing, create these files under `codebase-compass/00-codebase-view/`:
 
 #### `index.html`
 
-Dashboard shell with a **fixed sidebar** (does not scroll with main content). Structure:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Codebase Compass</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="app">
-    <nav id="sidebar">
-      <div class="sidebar-header">
-        <h1>Codebase Compass</h1>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle theme">☀️</button>
-      </div>
-      <ul id="topic-list"></ul>
-    </nav>
-    <main id="content">
-      <div id="section-container"></div>
-    </main>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
-```
+Copy `assets/index.html` from the skill into `codebase-compass/00-codebase-view/index.html`. Update the `<title>` to include the repository name. The sidebar header already contains a theme toggle button — replace the `#repo-title` text content with the repository or project name.
 
 #### `styles.css`
 
